@@ -1,0 +1,147 @@
+/* Custom CSS and Media Queries */
+
+/* --- Variables and Base Styles --- */
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #6c757d;
+    --dark-color: #212529;
+    --warning-color: #ffc107;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 1%; /* Offset for the fixed navbar height */
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* --- Navigation Bar --- */
+.custom-navbar {
+    background-color: var(--dark-color) !important;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Ensure the container uses flex for proper left/right alignment on large screens */
+.custom-navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+/* Effect when user scrolls down */
+.custom-navbar.scrolled {
+    background-color: rgba(33, 37, 41, 0.95) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.custom-navbar .nav-link:hover {
+    color: var(--warning-color);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 95vh; /* Full viewport height on desktop */
+
+    /* *** FIX: Using explicit background properties for stability *** */
+    background-image: url('image/hero-background.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;/* Ensures it covers the entire section */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.45); /* Darker overlay for high contrast text */
+    padding: 3rem;
+    border-radius: 15px;
+    max-width: 800px;
+}
+
+/* --- Featured Destinations Cards --- */
+.card-destination {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.card-destination:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-destination .card-img-top {
+    height: 200px; /* Fixed height for consistent look */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Small devices (tablets and below, less than 992px) */
+@media (max-width: 991.98px) {
+    /* Adjust Hero Section height on smaller screens */
+    .hero-section {
+        height: 75vh;
+    }
+
+    .hero-content {
+        padding: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Smaller headline */
+    }
+
+    .hero-content .lead {
+        font-size: 1rem;
+    }
+    
+    /* Center text items in the navbar when collapsed */
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    /* Stack CTA form inputs */
+    #cta .row > div {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Extra Small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    body {
+        padding-top: 56px; /* Adjust for smaller default Bootstrap navbar height */
+    }
+    
+    .hero-section {
+        height: 60vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Hide the non-essential descriptive text */
+    .d-md-block {
+        display: none !important;
+    }
+
+    /* Make search form inputs fill the width completely */
+    #search-form .col-md-4, #search-form .col-md-3, #search-form .col-md-2 {
+        width: 100%;
+    }
+}
